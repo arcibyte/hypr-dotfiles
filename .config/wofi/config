@@ -1,0 +1,9 @@
+width=600
+height=400
+location=center
+show=drun
+term=kitty
+allow_images=true
+allow_markup=true
+insensitive=true
+prompt=Run:

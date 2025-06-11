@@ -1,0 +1,32 @@
+configuration {
+    /*General */
+    modes: "drun,run,window,ssh";
+    font: "JetBrainsMono Nerd Font 12";
+    show-icons: true;
+    icon-theme: "Papirus-Dark";
+    terminal: "kitty";
+    drun-display-format: "{name}";
+    location: 0;
+    disable-history: false;
+    hide-scrollbar: true;
+    display-drun: "󰀻 Apps";
+    display-run: "󰅴 Run";
+    display-window: "󰖯 Window";
+    display-Network: "󰤨 Network";
+    sidebar-mode: true;
+    
+    /* Window */
+    width: 600;
+    lines: 10;
+    columns: 1;
+    
+    /* Keys */
+    kb-row-up: "Up,Control+k,Shift+Tab,Shift+ISO_Left_Tab";
+    kb-row-down: "Down,Control+j";
+    kb-accept-entry: "Control+m,Return,KP_Enter";
+    kb-remove-to-eol: "Control+Shift+e";
+    kb-mode-next: "Shift+Right,Control+Tab";
+    kb-mode-previous: "Shift+Left,Control+Shift+Tab";
+    kb-row-left: "Control+Page_Up";
+    kb-row-right: "Control+Page_Down";
+}

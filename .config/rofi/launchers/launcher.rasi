@@ -1,0 +1,142 @@
+/* Launcher Theme - Fixed Input Text Contrast */
+@import "~/.config/rofi/themes/catppuccin.rasi"
+
+* {
+    background-color: transparent;
+}
+
+window {
+    location: center;
+    anchor: center;
+    fullscreen: false;
+    width: 600px;
+    height: 400px;
+    x-offset: 0px;
+    y-offset: 0px;
+    enabled: true;
+    margin: 0px;
+    padding: 0px;
+    border-radius: 16px;
+    background-color: @bg-col;
+    cursor: "default";
+}
+
+mainbox {
+    enabled: true;
+    spacing: 20px;
+    margin: 0px;
+    padding: 20px;
+    children: ["inputbar", "listview"];
+}
+
+inputbar {
+    enabled: true;
+    spacing: 10px;
+    margin: 0px;
+    padding: 15px;
+    border: 2px solid;
+    border-radius: 12px;
+    border-color: @border-col;
+    background-color: #000000;
+    text-color: #ffffff;
+    children: ["textbox-prompt-colon", "entry"];
+}
+
+prompt {
+    enabled: true;
+    background-color: @blue;
+    text-color: #ffffff;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+textbox-prompt-colon {
+    enabled: true;
+    padding: 8px 5px;
+    expand: false;
+    str: "󰀻";
+    background-color: @blue;
+    text-color: #ffffff;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+entry {
+    enabled: true;
+    background-color: #1a1a1a;
+    text-color: #00ff00;
+    cursor: text;
+    placeholder: "Search Applications...";
+    padding: 8px 12px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+}
+
+listview {
+    enabled: true;
+    columns: 1;
+    lines: 8;
+    cycle: true;
+    dynamic: true;
+    scrollbar: false;
+    layout: vertical;
+    reverse: false;
+    fixed-height: true;
+    fixed-columns: true;
+    spacing: 5px;
+    margin: 0px;
+    padding: 0px;
+    background-color: transparent;
+    text-color: @fg-col;
+    cursor: "default";
+}
+
+scrollbar {
+    handle-width: 5px;
+    handle-color: @border-col;
+    border-radius: 8px;
+    background-color: @bg-col-light;
+}
+
+element {
+    enabled: true;
+    spacing: 10px;
+    margin: 0px;
+    padding: 12px;
+    border: 0px solid;
+    border-radius: 10px;
+    background-color: transparent;
+    text-color: @fg-col;
+    cursor: pointer;
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color: @fg-col;
+}
+
+element selected.normal {
+    background-color: @selected-col;
+    text-color: @fg-col2;
+    border: 1px solid;
+    border-color: @blue;
+}
+
+element-icon {
+    background-color: transparent;
+    text-color: inherit;
+    size: 28px;
+    cursor: inherit;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    highlight: inherit;
+    cursor: inherit;
+    vertical-align: 0.5;
+    horizontal-align: 0.0;
+    font-size: 12px;
+}

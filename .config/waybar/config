@@ -1,0 +1,216 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 35,
+    "spacing": 8,
+    "margin-top": 8,
+    "margin-left": 12,
+    "margin-right": 12,
+    
+    "modules-left": [
+        "custom/launcher",
+        "hyprland/workspaces",
+        "hyprland/window"
+    ],
+    
+    "modules-center": [
+        "clock"
+    ],
+    
+    "modules-right": [
+        "cpu",
+        "memory",
+        "network",
+        "pulseaudio",
+        "backlight",
+        "battery",
+        "custom/notification",
+        "custom/power"
+    ],
+
+    "custom/launcher": {
+        "format": "󰣇",
+        "tooltip": "Open applications menu",
+        "on-click": "rofi -show drun -theme ~/.config/rofi/launchers/launcher.rasi",
+        "on-click-right": "rofi -show run"
+    },
+
+    "hyprland/workspaces": {
+        "disable-scroll": false,
+        "all-outputs": false,
+        "format": "{name}",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "󰈙",
+            "6": "",
+            "7": "󰎆",
+            "8": "󰍃",
+            "9": "󰊖",
+            "10": "󰓇"
+        },
+        "persistent-workspaces": {
+            "*": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        },
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1",
+        "on-click": "activate"
+    },
+
+    "hyprland/window": {
+        "format": "{}",
+        "max-length": 60,
+        "separate-outputs": true,
+        "icon": true,
+        "icon-size": 16,
+        "rewrite": {
+            "(.*) — Mozilla Firefox": "󰈹 $1",
+            "(.*) - Firefox": "󰈹 $1",
+            "(.*) - Visual Studio Code": "󰨞 $1",
+            "(.*) - Code": "󰨞 $1",
+            "(.*) - vim": " $1",
+            "(.*) - nvim": " $1",
+            "(.*) - zsh": " $1",
+            "(.*) - bash": " $1",
+            "Steam": "󰓓 Steam",
+            "Discord": "󰙯 Discord",
+            "Spotify": "󰓇 Spotify"
+        }
+    },
+
+    "clock": {
+        "timezone": "America/Bogota",
+        "format": "󰸗 {:%H:%M}",
+        "format-alt": "󰃭 {:%d/%m/%Y}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "month",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "on-click-right": "mode",
+            "format": {
+                "months": "<span color='#f5e0dc'><b>{}</b></span>",
+                "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks": "<span color='#99ffdd'><b>S{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        }
+    },
+
+    "cpu": {
+        "format": "󰍛 {usage}%",
+        "tooltip": "Uso de CPU",
+        "interval": 2,
+        "states": {
+            "warning": 70,
+            "critical": 90
+        }
+    },
+
+    "memory": {
+        "format": "󰘚 {percentage}%",
+        "tooltip-format": "RAM: {used:0.1f}GB / {total:0.1f}GB\nSwap: {swapUsed:0.1f}GB / {swapTotal:0.1f}GB",
+        "interval": 5,
+        "states": {
+            "warning": 70,
+            "critical": 90
+        }
+    },
+
+    "network": {
+        "format-wifi": "󰤨 {signalStrength}%",
+        "format-ethernet": "󰈀 Connected",
+        "format-linked": "󰈂 No internet",
+        "format-disconnected": "󰤭 Offline",
+        "format-disabled": "󰤮 Disabled",
+        "tooltip-format": "Red: {ifname}",
+        "tooltip-format-wifi": "SSID: {essid}\nSignal: {signalStrength}%\nIP: {ipaddr}\nFrecuency: {frequency}MHz",
+        "tooltip-format-ethernet": "Connection: {ifname}\nIP: {ipaddr}\nSpeed: {bandwidthUpOctets}",
+        "tooltip-format-disconnected": "Network offline",
+        "on-click": "nm-connection-editor",
+        "on-click-right": "~/.config/rofi/wifi/wifi.sh"
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "󰂰 {volume}%",
+        "format-bluetooth-muted": "󰂲 Muted",
+        "format-muted": "󰖁 Muted",
+        "format-source": "󰍬 {volume}%",
+        "format-source-muted": "󰍭 Muted",
+        "format-icons": {
+            "headphone": "󰋋",
+            "hands-free": "󰋎",
+            "headset": "󰋎",
+            "phone": "󰄜",
+            "portable": "󰄜",
+            "car": "󰄋",
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "scroll-step": 2,
+        "reverse-scrolling": 1,
+        "on-click": "pavucontrol",
+        "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "tooltip-format": "Volumen: {volume}%\nDevice: {desc}"
+    },
+
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{icon} {percent}%",
+        "format-icons": ["󰃞", "󰃝", "󰃟", "󰃠"],
+        "scroll-step": 5,
+        "reverse-scrolling": 1,
+        "on-scroll-up": "brightnessctl set +5%",
+        "on-scroll-down": "brightnessctl set 5%-",
+        "tooltip-format": "Brightness: {percent}%"
+    },
+
+    "battery": {
+        "bat": "BAT0",
+        "states": {
+            "good": 80,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": "󰂄 {capacity}%",
+        "format-full": "󰂄 Full",
+        "format-alt": "{icon} {time}",
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "tooltip-format": "Battery: {capacity}%\n{timeTo}\nSalud: {health}%\nCycles: {cycles}",
+        "on-click": "gnome-power-statistics"
+    },
+
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "󰂚",
+            "none": "󰂜",
+            "dnd-notification": "󰂛",
+            "dnd-none": "󰪑",
+            "inhibited-notification": "󰂠",
+            "inhibited-none": "󰪑",
+            "dnd-inhibited-notification": "󰂛",
+            "dnd-inhibited-none": "󰪑"
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+
+    "custom/power": {
+        "format": "⏻",
+        "tooltip": "Menu",
+        "on-click": "wlogout -p layer-shell",
+        "on-click-right": "systemctl suspend"
+    }
+}
